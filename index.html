@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="創智科研生技以 AI 與經顱超音波技術，推動智慧腦血管影像與精準醫療創新。">
+  <title>創智科研生技 Innovative NeuroTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap container">
+      <a class="brand" href="#home" aria-label="創智科研生技首頁">
+        <span class="brand-mark">N</span>
+        <span class="brand-name"><strong>創智科研生技</strong><small>Innovative NeuroTech</small></span>
+      </a>
+      <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+      <nav class="main-nav" aria-label="主要導覽">
+        <a class="active" href="#home">首頁</a>
+        <a href="#about">關於我們</a>
+        <a href="#technology">核心技術</a>
+        <a href="#portfolio">研發成果</a>
+        <a href="#news">最新消息</a>
+        <a href="#contact">聯絡我們</a>
+        <a class="nav-cta" href="#contact">Contact Us <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+<style>
+/* Innovative NeuroTech — responsive dark medical technology theme */
+:root {
+  --bg: #04182e;
+  --bg-deep: #021020;
+  --panel: #082846;
+  --panel-2: #0b3558;
+  --cyan: #16d9ef;
+  --cyan-soft: #78f1ff;
+  --blue: #168bd0;
+  --text: #f4fbff;
+  --muted: #a8c7dc;
+  --line: rgba(78, 211, 245, .28);
+  --glow: 0 0 28px rgba(0, 207, 255, .18);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0; color: var(--text); background: #061a30;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.65; overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+.container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+.site-header {
+  position: sticky; top: 0; z-index: 50; height: 78px;
+  background: rgba(2, 16, 32, .92); border-bottom: 1px solid rgba(63, 208, 244, .16);
+  backdrop-filter: blur(18px);
+}
+.nav-wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.brand-mark {
+  width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50%;
+  color: #001b2c; font-weight: 900; font-size: 21px;
+  background: radial-gradient(circle at 35% 25%, #a7fbff, #12bde4 48%, #0572b2);
+  box-shadow: 0 0 18px rgba(16, 220, 255, .5);
+}
+.brand-name { display: flex; flex-direction: column; line-height: 1.25; }
+.brand-name strong { font-size: 14px; letter-spacing: .04em; }
+.brand-name small { color: #8cb7d0; font-size: 9px; letter-spacing: .08em; }
+.main-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 27px); }
+.main-nav a { color: #c5d9e7; font-size: 12px; transition: color .2s; white-space: nowrap; }
+.main-nav a:hover, .main-nav a.active { color: var(--cyan); }
+.main-nav .nav-cta { padding: 9px 17px; color: #002034; border-radius: 24px; font-weight: 800; background: linear-gradient(110deg, #20e6ee, #0c9bd0); box-shadow: 0 0 20px rgba(13, 199, 235, .3); }
+.nav-cta span { margin-left: 7px; }
+.menu-toggle { display: none; color: white; background: none; border: 0; font-size: 25px; cursor: pointer; }
+.section { position: relative; padding: 100px 0; }
+.section-shell, .technology-section, .portfolio-section, .news-section, .contact-section {
+  background:
+    radial-gradient(ellipse at 82% 30%, rgba(0, 147, 224, .18), transparent 38%),
+    linear-gradient(135deg, #041a32 0%, #031326 60%, #06213c 100%);
+}
+.hero { min-height: 670px; display: flex; align-items: center; overflow: hidden; }
+.hero-grid {
+  position: absolute; inset: 0; opacity: .25; pointer-events: none;
+  background-image: linear-gradient(rgba(48, 181, 222, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(48, 181, 222, .08) 1px, transparent 1px);
+  background-size: 52px 52px; mask-image: linear-gradient(90deg, transparent, #000 60%, #000);
+}
+.hero-content { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 30px; padding-top: 45px; padding-bottom: 65px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); font-size: 10px; font-weight: 800; letter-spacing: .19em; }
+.eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+.hero h1 { margin: 17px 0 5px; font-size: clamp(34px, 4vw, 52px); line-height: 1.25; letter-spacing: .03em; }
+.hero h2 { margin: 0; color: var(--cyan-soft); font-size: clamp(17px, 2vw, 22px); font-weight: 600; line-height: 1.4; }
+.hero-copy > p { color: #b9d4e6; font-size: 14px; margin: 20px 0 26px; }
+.hero-actions { display: flex; gap: 12px; margin-bottom: 35px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; border-radius: 28px; padding: 11px 20px; font-size: 12px; font-weight: 800; cursor: pointer; transition: .25s; }
+.button:hover { transform: translateY(-3px); box-shadow: 0 0 24px rgba(14, 220, 255, .35); }
+.button-primary { color: #002238; background: linear-gradient(110deg, #26e7ed, #0a9dd3); }
+.button-ghost { border-color: rgba(71, 211, 239, .5); color: #bceefa; background: rgba(7, 53, 82, .4); }
+.hero-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 570px; }
+.highlight-card { min-height: 76px; display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(76, 196, 231, .28); border-radius: 13px; background: linear-gradient(130deg, rgba(22, 87, 127, .68), rgba(4, 28, 51, .78)); transition: .25s; }
+.highlight-card:hover { border-color: var(--cyan); transform: translateY(-3px); box-shadow: var(--glow); }
+.highlight-card b { display: block; font-size: 11px; }
+.highlight-card small { display: block; color: #a9c9df; font-size: 9px; line-height: 1.35; }
+.mini-brain, .mini-wave { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border-radius: 9px; color: var(--cyan-soft); font-size: 28px; background: radial-gradient(circle, #155b82, #061a30); }
+.arrow { margin-left: auto; color: var(--cyan); font-size: 22px; }
+.hero-art { min-height: 480px; position: relative; display: grid; place-items: center; }
+.brain-visual { position: relative; z-index: 2; width: min(100%, 550px); filter: drop-shadow(0 0 24px rgba(0, 192, 255, .28)); animation: float 6s ease-in-out infinite; }
+.brain-visual svg { width: 100%; overflow: visible; }
+.orbit { position: absolute; width: 440px; height: 260px; border: 1px solid rgba(48, 204, 242, .25); border-radius: 50%; transform: rotate(-23deg); box-shadow: 0 0 30px rgba(0, 176, 230, .08); }
+.orbit-two { width: 520px; height: 330px; transform: rotate(24deg); border-color: rgba(48, 204, 242, .14); }
+.scan-beam { position: absolute; z-index: 3; width: 110%; height: 2px; background: linear-gradient(90deg, transparent, #36eaff, transparent); box-shadow: 0 0 20px #1adfff; transform: rotate(-19deg); animation: scan 5s ease-in-out infinite; }
+.art-label { position: absolute; z-index: 4; color: #8ed8ed; font-size: 9px; letter-spacing: .18em; }
+.art-label b { color: #ff8b83; margin-left: 9px; }
+.label-top { top: 42px; right: 10px; }.label-bottom { bottom: 32px; left: 10px; }
+.hero-bottom-line { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #14d8f2, transparent); box-shadow: 0 0 20px #12d9f2; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes scan { 0%,100% { opacity: 0; transform: translateY(-110px) rotate(-19deg); } 50% { opacity: .8; transform: translateY(100px) rotate(-19deg); } }
+
+.about-section { background: linear-gradient(180deg, #061e38, #031326); }
+.about-banner { min-height: 310px; display: grid; grid-template-columns: .9fr 1.1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(110deg, #082947, #04182f); box-shadow: var(--glow); }
+.about-copy { padding: 40px 42px; align-self: center; }
+.about-copy h2 { margin: 10px 0 0; font-size: 27px; }.about-copy h3 { margin: 0 0 15px; color: var(--cyan); font-size: 18px; font-weight: 500; }
+.about-copy p { max-width: 470px; color: #b5cddd; font-size: 12px; }
+.text-link { display: inline-flex; gap: 10px; align-items: center; color: var(--cyan); font-size: 11px; font-weight: 700; }
+.text-link:hover { color: white; }
+.lab-scene { position: relative; min-height: 310px; overflow: hidden; background: radial-gradient(ellipse at 70% 45%, rgba(20, 162, 231, .45), transparent 40%), linear-gradient(125deg, #0b426d, #061b34 75%); }
+.lab-scene:before { content: ""; position: absolute; inset: 0; opacity: .25; background: repeating-linear-gradient(110deg, transparent 0 45px, rgba(120, 224, 255, .18) 46px 47px); }
+.monitor { position: absolute; border: 5px solid #07101c; border-radius: 7px; background: linear-gradient(135deg, #071b32, #0a5a8a); box-shadow: 0 12px 28px #00101f; }
+.monitor-back { width: 36%; height: 44%; top: 18%; left: 15%; transform: perspective(400px) rotateY(9deg); }
+.monitor-front { width: 43%; height: 57%; top: 16%; right: 12%; display: grid; place-items: center; border-color: #101c29; background: radial-gradient(circle, #125c8a, #04172b); }
+.monitor-brain { font-size: 90px; color: #5deaff; text-shadow: 0 0 20px #16caff; }
+.monitor-lines { position: absolute; bottom: 10px; left: 12%; width: 76%; height: 22%; border-top: 1px solid #1ab8e5; background: repeating-linear-gradient(0deg, transparent 0 8px, rgba(42, 188, 227, .18) 9px 10px); }
+.lab-floor { position: absolute; bottom: 0; width: 100%; height: 23%; background: linear-gradient(transparent, rgba(0, 8, 20, .9)); transform: perspective(180px) rotateX(35deg); }
+.lab-caption { position: absolute; bottom: 15px; right: 20px; color: #82dff0; font-size: 8px; letter-spacing: .2em; }
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgba(3, 22, 42, .8); }
+.value-card { text-align: center; padding: 23px 12px; border-right: 1px solid var(--line); }.value-card:last-child { border: 0; }
+.line-icon { color: var(--cyan); font-size: 28px; text-shadow: 0 0 14px #00c9f0; }.value-card h4 { margin: 4px 0; color: #dffaff; font-size: 14px; }.value-card p { margin: 0; color: #9cbcd0; font-size: 10px; }
+
+.section-heading { margin-bottom: 30px; }.section-heading h2 { margin: 7px 0 4px; font-size: 29px; }.section-heading h2 span { margin-left: 9px; color: var(--cyan); font-size: 17px; font-weight: 500; }.section-heading p { margin: 0; color: #a9c4d8; font-size: 12px; }
+.technology-section { background: radial-gradient(ellipse at 90% 0%, rgba(0, 157, 231, .14), transparent 40%), #04172c; }
+.tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tech-card { position: relative; padding: 23px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(14, 62, 98, .85), rgba(3, 22, 42, .96)); transition: .25s; overflow: hidden; }
+.tech-card:hover, .portfolio-card:hover, .news-card:hover { transform: translateY(-5px); border-color: rgba(34, 220, 245, .7); box-shadow: var(--glow); }
+.tech-number { color: var(--cyan); font-size: 12px; font-weight: 800; letter-spacing: .12em; }.tech-card h3 { margin: 5px 0 0; font-size: 16px; }.tech-card .en { min-height: 31px; margin: 0; color: var(--cyan-soft); font-size: 10px; }
+.tech-visual { height: 145px; position: relative; display: grid; place-items: center; margin: 14px 0; overflow: hidden; border-radius: 9px; background: radial-gradient(circle at center, #0c527c, #041a31 70%); }
+.vascular-tree { color: #ff8278; font-size: 112px; text-shadow: 0 0 22px #ff5e62; transform: rotate(90deg); }
+.visual-tag { position: absolute; bottom: 8px; right: 10px; color: #9eeeff; font-size: 8px; letter-spacing: .12em; }
+.heatmap { width: 76%; height: 60%; border-radius: 48% 52% 42% 58%; background: conic-gradient(from 30deg, #f5ec43, #e54d36, #0dc8f4, #1762d0, #23e0d4, #f5ec43); filter: blur(3px); box-shadow: 0 0 25px rgba(32, 195, 255, .4); }
+.platform-flow { height: 145px; display: flex; align-items: center; justify-content: center; gap: 12px; margin: 14px 0; background: radial-gradient(circle, #0c527c, #041a31 70%); }
+.platform-flow span { width: 65px; height: 65px; display: grid; place-items: center; border: 1px solid #2bc7e8; border-radius: 12px; color: #baf8ff; background: rgba(12, 99, 140, .35); font-size: 11px; }.platform-flow b { color: var(--cyan); }
+.tech-card > p:not(.en) { color: #b4cbdc; font-size: 11px; min-height: 38px; }.tech-card .text-link { margin-top: 3px; }
+
+.portfolio-section { background: linear-gradient(180deg, #04172c, #06223d); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.portfolio-card { overflow: hidden; min-height: 190px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(145deg, #0b3c61, #041a30); transition: .25s; }
+.portfolio-art { height: 104px; display: grid; place-items: center; border-radius: 8px; color: #b9f8ff; font-size: 62px; text-shadow: 0 0 22px #00bce8; background: radial-gradient(circle at 50% 50%, #146a91, #061a30 70%); }
+.art-vessel { color: #ff8b7e; }.art-network { background-image: radial-gradient(circle at 50% 50%, #1976a0, transparent 55%), linear-gradient(45deg, #06203a, #0d4269); }
+.art-probe { font-size: 74px; background: linear-gradient(140deg, #164e75, #07192d); }
+.art-heat { background: #092746; }.art-heat span { width: 78%; height: 58%; border-radius: 50%; background: conic-gradient(#f5e94b, #f26d31, #18c9ed, #2856d2, #20d6c9, #f5e94b); filter: blur(4px); }
+.portfolio-card h3 { margin: 9px 0 1px; font-size: 12px; }.portfolio-card p { margin: 0; color: #a8c5d9; font-size: 9px; }.portfolio-card.compact { min-height: 78px; display: flex; align-items: center; gap: 12px; }.compact h3 { margin: 0; }.small-icon { color: var(--cyan); font-size: 26px; text-shadow: 0 0 12px var(--cyan); }
+
+.news-section { background: #031528; }.heading-row { display: flex; align-items: end; justify-content: space-between; }
+.news-tabs { display: flex; gap: 8px; margin-bottom: 17px; }.news-tabs button { padding: 7px 16px; border: 1px solid var(--line); border-radius: 20px; color: #a8c6d9; background: transparent; font-size: 10px; cursor: pointer; }.news-tabs button.selected, .news-tabs button:hover { color: #002337; background: var(--cyan); border-color: var(--cyan); }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }.news-card { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #08233e; transition: .25s; }.news-image { height: 155px; display: grid; place-items: center; text-align: center; color: rgba(214, 248, 255, .9); font-size: 17px; font-weight: 800; letter-spacing: .13em; text-shadow: 0 2px 10px #001; }
+.news-one { background: linear-gradient(120deg, rgba(0, 20, 40, .2), rgba(0, 18, 35, .8)), repeating-linear-gradient(90deg, #16527a 0 5px, #0c3559 6px 12px); }
+.news-two { background: radial-gradient(circle at 65% 30%, #1684b9, transparent 25%), linear-gradient(130deg, #09223c, #17628a, #06182c); }
+.news-three { background: linear-gradient(130deg, #174e6c, #0a2a46 50%, #1b6b8a); }
+.news-card time { display: block; margin: 12px 14px 3px; color: var(--cyan); font-size: 9px; }.news-card h3 { margin: 0 14px 15px; font-size: 12px; }
+
+.contact-section { padding-top: 80px; background: radial-gradient(ellipse at 70% 10%, rgba(0, 160, 224, .16), transparent 38%), #04172b; }
+.contact-panel { display: grid; grid-template-columns: .85fr 1.2fr .8fr; gap: 28px; padding: 35px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(125deg, rgba(7, 46, 76, .9), rgba(2, 18, 35, .97)); box-shadow: var(--glow); }
+.contact-intro h2 { margin: 10px 0 0; font-size: 27px; }.contact-intro h3 { margin: 0; color: var(--cyan); font-size: 17px; font-weight: 500; }.contact-intro > p { color: #b1c9da; font-size: 11px; }
+.partnership { margin-top: 32px; padding-top: 17px; border-top: 1px solid var(--line); }.partnership b, .contact-info b { display: block; font-size: 13px; }.partnership small, .contact-info small { color: var(--cyan); font-size: 10px; }.partnership p { color: #a8c4d6; font-size: 10px; }
+.contact-form { display: grid; gap: 10px; }.contact-form label { display: grid; gap: 4px; color: #c7e1ef; font-size: 10px; }.contact-form input, .contact-form textarea, .contact-form select { width: 100%; min-width: 0; padding: 9px 11px; color: white; border: 1px solid rgba(70, 190, 225, .35); border-radius: 7px; outline: none; background: rgba(2, 19, 36, .75); font-size: 11px; }.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(22, 217, 239, .1); }.contact-form input::placeholder, .contact-form textarea::placeholder { color: #688da7; }.contact-form select option { color: white; background: #08233e; }.contact-form .button { justify-self: start; min-width: 145px; }.form-note { margin: -3px 0 0; color: #789eb7; font-size: 9px; }
+.contact-info { padding-left: 20px; border-left: 1px solid var(--line); }.contact-info p { color: #b7d1e1; font-size: 10px; overflow-wrap: anywhere; }.socials { display: flex; gap: 9px; margin-top: 20px; }.socials a { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--cyan); font-size: 11px; }
+.site-footer { padding: 20px 0; border-top: 1px solid rgba(75, 196, 229, .16); background: #020e1c; }.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }.footer-inner p, .footer-inner > a:last-child { color: #789bb2; font-size: 9px; letter-spacing: .1em; }
+
+@media (max-width: 900px) {
+  .main-nav { gap: 12px; }.main-nav a { font-size: 10px; }.main-nav .nav-cta { padding: 8px 12px; }
+  .hero { min-height: 600px; }.hero-content { grid-template-columns: 1fr 1fr; }.hero-art { min-height: 390px; }
+  .contact-panel { grid-template-columns: 1fr 1.2fr; }.contact-info { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 25px; align-items: center; padding: 15px 0 0; border-left: 0; border-top: 1px solid var(--line); }.contact-info p { margin: 0; }
+}
+@media (max-width: 680px) {
+  .container { width: min(100% - 32px, 520px); }
+  .site-header { height: 66px; }.menu-toggle { display: block; }
+  .main-nav { position: absolute; top: 65px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 22px 18px; background: rgba(2, 16, 32, .98); border-bottom: 1px solid var(--line); }
+  .main-nav.is-open { display: flex; }.main-nav a { padding: 12px 5px; font-size: 13px; border-bottom: 1px solid rgba(75, 196, 229, .1); }.main-nav .nav-cta { margin-top: 10px; text-align: center; border: 0; }
+  .section { padding: 70px 0; }.hero { min-height: auto; }.hero-content { grid-template-columns: 1fr; gap: 0; padding-top: 55px; padding-bottom: 45px; }.hero h1 { font-size: 35px; }.hero-copy > p { font-size: 12px; }.hero-art { min-height: 300px; margin-top: 10px; }.brain-visual { max-width: 390px; }.orbit { width: 300px; height: 180px; }.orbit-two { width: 350px; height: 230px; }
+  .hero-highlights { gap: 8px; }.highlight-card { padding: 9px; gap: 8px; }.highlight-card b { font-size: 9px; }.highlight-card small { font-size: 8px; }.mini-brain, .mini-wave { width: 32px; height: 36px; font-size: 22px; }
+  .about-banner { grid-template-columns: 1fr; }.about-copy { padding: 28px 24px; }.about-copy h2 { font-size: 23px; }.lab-scene { min-height: 230px; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }.value-card { padding: 18px 8px; }.value-card:nth-child(2) { border-right: 0; }.value-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .section-heading h2 { font-size: 25px; }.section-heading h2 span { display: block; margin: 2px 0 0; font-size: 15px; }
+  .tech-grid { grid-template-columns: 1fr; }.tech-card { padding: 20px; }.tech-visual, .platform-flow { height: 155px; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }.portfolio-card { min-height: 175px; padding: 9px; }.portfolio-art { height: 95px; }.portfolio-card h3 { font-size: 10px; }.portfolio-card.compact { min-height: 75px; }
+  .heading-row { align-items: start; gap: 12px; flex-direction: column; }.news-grid { grid-template-columns: 1fr; }.news-image { height: 175px; }.news-card h3 { font-size: 13px; }
+  .contact-panel { grid-template-columns: 1fr; padding: 24px 18px; gap: 24px; }.contact-intro h2 { font-size: 24px; }.partnership { margin-top: 18px; }.contact-info { grid-column: auto; display: block; }.contact-info p { margin: 10px 0; }
+  .footer-inner { flex-wrap: wrap; justify-content: center; text-align: center; }.footer-inner p { width: 100%; order: 3; margin: 0; }.desktop-only { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+
+/* ===== Refined medical / biotech corporate visual direction ===== */
+:root {
+  --bg: #f6f7f5;
+  --bg-deep: #edf1ef;
+  --panel: #ffffff;
+  --panel-2: #f0f4f2;
+  --cyan: #397d78;
+  --cyan-soft: #5d918b;
+  --blue: #496b7a;
+  --text: #263a3b;
+  --muted: #687b7a;
+  --line: #dce5e1;
+  --glow: 0 8px 28px rgba(40, 69, 65, .07);
+}
+body { color: var(--text); background: #fff; }
+.site-header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid #e7ece9;
+  backdrop-filter: blur(10px);
+}
+.brand-mark {
+  color: #fff;
+  background: #397d78;
+  box-shadow: none;
+  border-radius: 10px;
+}
+.brand-name strong { color: #263a3b; }
+.brand-name small { color: #7b8b87; }
+.main-nav a { color: #536765; }
+.main-nav a:hover, .main-nav a.active { color: #397d78; }
+.main-nav .nav-cta {
+  color: #fff;
+  background: #397d78;
+  box-shadow: none;
+  border-radius: 5px;
+}
+.main-nav .nav-cta:hover { background: #2e6965; }
+.section { padding: 88px 0; }
+.section-shell, .technology-section, .portfolio-section, .news-section, .contact-section {
+  background: #f7f8f6;
+}
+.hero {
+  min-height: 620px;
+  background: linear-gradient(115deg, #f7f8f6 0%, #eef3f0 100%);
+}
+.hero-grid { display: none; }
+.hero-content { grid-template-columns: 1fr 1fr; gap: 56px; }
+.eyebrow {
+  color: #397d78;
+  font-size: 11px;
+  letter-spacing: .13em;
+}
+.eyebrow i { background: #397d78; box-shadow: none; }
+.hero h1 { color: #263a3b; font-size: clamp(36px, 4vw, 52px); }
+.hero h2 { color: #527b76; font-weight: 500; }
+.hero-copy > p { color: #667875; font-size: 15px; }
+.button { border-radius: 5px; padding: 12px 21px; }
+.button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(40,69,65,.12); }
+.button-primary { color: #fff; background: #397d78; }
+.button-primary:hover { background: #2e6965; }
+.button-ghost { border-color: #9bb7af; color: #397d78; background: transparent; }
+.hero-highlights { gap: 14px; }
+.highlight-card {
+  border: 1px solid #dce5e1;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(40,69,65,.04);
+}
+.highlight-card:hover { border-color: #8aada3; box-shadow: var(--glow); }
+.highlight-card b { color: #304746; font-size: 12px; }
+.highlight-card small { color: #7a8986; font-size: 10px; }
+.mini-brain, .mini-wave {
+  color: #397d78;
+  background: #edf4f1;
+  border-radius: 7px;
+}
+.arrow { color: #397d78; }
+.hero-art {
+  min-height: 430px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #e5eeea, #f5f7f4);
+  overflow: hidden;
+}
+.brain-visual { width: min(88%, 500px); filter: none; animation: none; }
+.brain-visual svg { max-height: 390px; }
+.brain-visual svg defs filter { display: none; }
+.brain-visual svg [filter] { filter: none; }
+.brain-visual svg ellipse { opacity: .35; }
+.orbit, .scan-beam, .hero-bottom-line { display: none; }
+.art-label { color: #68827c; font-size: 9px; }
+.art-label b { color: #b17a69; }
+.about-section { background: #fff; }
+.about-banner {
+  border: 1px solid #e1e8e4;
+  border-radius: 8px;
+  background: #f7f8f6;
+  box-shadow: none;
+}
+.about-copy { padding: 44px; }
+.about-copy h2 { color: #263a3b; }
+.about-copy h3 { color: #527b76; }
+.about-copy p { color: #687b78; font-size: 13px; line-height: 1.9; }
+.text-link { color: #397d78; }
+.text-link:hover { color: #284f4b; }
+.lab-scene {
+  background: linear-gradient(135deg, #e4ece8, #cbdad3);
+}
+.lab-scene:before { opacity: .12; }
+.monitor { border-color: #718984; box-shadow: 0 8px 18px rgba(40,60,55,.12); }
+.monitor-back { background: #f4f7f4; }
+.monitor-front { background: radial-gradient(circle, #dcebe5, #9ebbb0); border-color: #718984; }
+.monitor-brain { color: #527b76; text-shadow: none; }
+.monitor-lines { border-color: #8aada3; background: repeating-linear-gradient(0deg, transparent 0 8px, rgba(82,123,118,.13) 9px 10px); }
+.lab-floor { background: linear-gradient(transparent, rgba(67,91,82,.16)); }
+.lab-caption { color: #536e67; }
+.values-grid {
+  border: 1px solid #e1e8e4;
+  border-radius: 8px;
+  background: #fff;
+}
+.value-card { border-color: #e1e8e4; }
+.line-icon { color: #56877f; text-shadow: none; }
+.value-card h4 { color: #304746; }
+.value-card p { color: #7a8986; }
+.section-heading h2 { color: #263a3b; }
+.section-heading h2 span { color: #668b83; }
+.section-heading p { color: #71817e; font-size: 13px; }
+.technology-section { background: #f5f7f5; }
+.tech-grid { gap: 18px; }
+.tech-card {
+  padding: 25px;
+  border: 1px solid #e0e8e3;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(40,69,65,.035);
+}
+.tech-card:hover, .portfolio-card:hover, .news-card:hover {
+  transform: translateY(-3px);
+  border-color: #a9c3b9;
+  box-shadow: 0 10px 24px rgba(40,69,65,.08);
+}
+.tech-number { color: #71968c; }
+.tech-card h3 { color: #304746; font-size: 17px; }
+.tech-card .en { color: #668b83; }
+.tech-visual, .platform-flow {
+  background: #edf3f0;
+  border-radius: 6px;
+}
+.vascular-tree { color: #b17a69; text-shadow: none; }
+.visual-tag { color: #66817a; }
+.heatmap { filter: saturate(.55); box-shadow: none; }
+.platform-flow span {
+  border: 1px solid #c5d8d0;
+  border-radius: 6px;
+  color: #456b64;
+  background: #fff;
+}
+.platform-flow b { color: #71968c; }
+.tech-card > p:not(.en) { color: #687b78; font-size: 12px; line-height: 1.8; }
+.portfolio-section { background: #fff; }
+.portfolio-card {
+  border: 1px solid #e1e8e4;
+  border-radius: 7px;
+  background: #f8faf8;
+}
+.portfolio-art {
+  color: #62877e;
+  text-shadow: none;
+  background: #eaf1ed;
+  border-radius: 5px;
+}
+.art-vessel { color: #b17a69; }
+.art-network { background: #eaf1ed; }
+.art-probe { background: #eaf1ed; }
+.art-heat { background: #edf2ef; }
+.art-heat span { filter: blur(3px) saturate(.5); }
+.portfolio-card h3 { color: #304746; }
+.portfolio-card p { color: #7a8986; }
+.small-icon { color: #62877e; text-shadow: none; }
+.news-section { background: #f5f7f5; }
+.news-tabs button {
+  border-color: #d6e1dc;
+  color: #637773;
+  border-radius: 4px;
+  background: #fff;
+}
+.news-tabs button.selected, .news-tabs button:hover {
+  color: #fff;
+  background: #397d78;
+  border-color: #397d78;
+}
+.news-card {
+  border: 1px solid #e0e8e3;
+  border-radius: 7px;
+  background: #fff;
+}
+.news-image {
+  color: #fff;
+  text-shadow: none;
+  letter-spacing: .08em;
+  background-color: #8da9a0;
+}
+.news-one { background: linear-gradient(130deg, #829f96, #b8c9c1); }
+.news-two { background: linear-gradient(130deg, #78958d, #c1d0c8); }
+.news-three { background: linear-gradient(130deg, #8ca49a, #c7d2cb); }
+.news-card time { color: #668b83; }
+.news-card h3 { color: #304746; }
+.contact-section { background: #edf2ef; }
+.contact-panel {
+  border: 1px solid #dce5e1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(40,69,65,.05);
+}
+.contact-intro h2 { color: #263a3b; }
+.contact-intro h3 { color: #668b83; }
+.contact-intro > p, .partnership p { color: #687b78; }
+.partnership { border-color: #e1e8e4; }
+.partnership small, .contact-info small { color: #668b83; }
+.contact-form label { color: #526764; font-size: 11px; }
+.contact-form input, .contact-form textarea, .contact-form select {
+  color: #304746;
+  border: 1px solid #d6e1dc;
+  border-radius: 5px;
+  background: #fbfcfb;
+}
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+  border-color: #71968c;
+  box-shadow: 0 0 0 2px rgba(57,125,120,.09);
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #a0aeaa; }
+.contact-form select option { color: #304746; background: #fff; }
+.form-note { color: #899994; }
+.contact-info { border-color: #e1e8e4; }
+.contact-info p { color: #687b78; }
+.socials a { border-color: #d6e1dc; color: #397d78; }
+.site-footer {
+  border-color: #e2e9e5;
+  background: #263d3b;
+}
+.site-footer .brand-name strong { color: #fff; }
+.site-footer .brand-name small { color: #bdcec7; }
+.footer-inner p, .footer-inner > a:last-child { color: #c0d0ca; }
+@media (max-width: 900px) {
+  .hero-content { gap: 25px; }
+}
+@media (max-width: 680px) {
+  .site-header { background: rgba(255,255,255,.98); }
+  .main-nav { background: #fff; border-bottom-color: #e1e8e4; }
+  .main-nav a { color: #536765; border-bottom-color: #edf1ef; }
+  .hero { background: #f2f5f2; }
+  .hero-content { gap: 12px; }
+  .hero-art { min-height: 270px; }
+  .about-copy { padding: 30px 24px; }
+  .contact-panel { padding: 24px 18px; }
+}
+
+</style>
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-grid"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> SMART MEDICAL TECHNOLOGY</span>
+          <h1>智慧穿顱・看見大腦</h1>
+          <h2>AI-Powered Transcranial<br>Ultrasound Innovation</h2>
+          <p>結合人工智慧、經顱超音波與臨床醫學，<br class="desktop-only">開發新世代智慧腦部超音波平台。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#technology">探索核心技術 <span>→</span></a>
+            <a class="button button-ghost" href="#about">認識我們</a>
+          </div>
+          <div class="hero-highlights">
+            <a class="highlight-card" href="#technology">
+              <span class="mini-brain">⌁</span>
+              <span><b>AI AI智慧顱內血管定位</b><small>AI-Assisted Intracranial<br>Vessel Localization</small></span>
+              <span class="arrow">›</span>
+            </a>
+            <a class="highlight-card" href="#technology">
+              <span class="mini-wave">▥</span>
+              <span><b>Transcranial Brain</b><small>Elastography</small></span>
+              <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="腦部與超音波科技視覺">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="brain-visual">
+            <svg viewBox="0 0 520 430" role="img" aria-label="抽象腦部神經與血管示意">
+              <defs>
+                <radialGradient id="brainGlow"><stop stop-color="#5ceaff" stop-opacity=".55"/><stop offset="1" stop-color="#0873bc" stop-opacity="0"/></radialGradient>
+                <linearGradient id="brainLine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9fbff"/><stop offset=".55" stop-color="#45cfff"/><stop offset="1" stop-color="#0873c7"/></linearGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <ellipse cx="250" cy="215" rx="220" ry="190" fill="url(#brainGlow)"/>
+              <g fill="none" stroke="url(#brainLine)" stroke-width="3" filter="url(#glow)" opacity=".95">
+                <path d="M246 76 C182 38 104 91 111 157 C62 189 92 278 150 287 C153 352 226 370 264 329 C307 367 378 326 365 271 C423 230 394 157 349 145 C345 75 284 49 246 76Z"/>
+                <path d="M247 76 C228 118 251 145 236 180 C215 217 242 251 264 273 C275 298 264 318 264 329"/>
+                <path d="M145 114 C185 116 202 145 192 175 M113 157 C153 159 166 190 151 218 M150 287 C183 266 201 286 205 320"/>
+                <path d="M349 145 C315 154 305 185 322 208 M365 271 C332 258 313 280 315 315 M284 87 C281 121 308 137 337 126"/>
+                <path d="M189 96 C167 137 190 151 214 158 M293 175 C270 193 279 225 304 240 M176 236 C208 224 224 246 218 273"/>
+              </g>
+              <g fill="none" stroke="#ff806f" stroke-width="5" stroke-linecap="round" filter="url(#glow)">
+                <path d="M257 329 C251 279 242 243 259 206 C275 171 269 137 252 112"/>
+                <path d="M258 220 C220 206 204 181 192 151 M258 220 C296 201 309 173 326 149"/>
+                <path d="M245 266 C216 256 191 264 174 283 M264 267 C296 252 323 261 342 282"/>
+                <path d="M252 169 C233 149 223 126 227 103"/>
+              </g>
+              <g fill="#bff8ff" filter="url(#glow)"><circle cx="258" cy="220" r="6"/><circle cx="192" cy="151" r="4"/><circle cx="326" cy="149" r="4"/><circle cx="174" cy="283" r="4"/><circle cx="342" cy="282" r="4"/></g>
+            </svg>
+          </div>
+          <div class="scan-beam"></div>
+          <div class="art-label label-top">NEURO VASCULAR AI <b>RESEARCH</b></div>
+          <div class="art-label label-bottom">RESEARCH · ENGINEERING · CLINICAL</div>
+        </div>
+      </div>
+      <div class="hero-bottom-line"></div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-banner">
+          <div class="about-copy">
+            <span class="eyebrow">WHO WE ARE</span>
+            <h2>關於創智科研生技</h2><h3>About Us</h3>
+            <p>創智科研生技致力於智慧醫療與經顱超音波技術研發，以創新科技與臨床需求為核心，結合人工智慧、影像辨識與醫學專業，開發新世代智慧腦部影像解決方案。</p>
+            <a class="text-link" href="#contact">了解更多 <span>→</span></a>
+          </div>
+          <div class="lab-scene">
+            <div class="monitor monitor-back"></div>
+            <div class="monitor monitor-front"><div class="monitor-brain">◎</div><div class="monitor-lines"></div></div>
+            <div class="lab-floor"></div>
+            <span class="lab-caption">SMART MEDICAL IMAGING LAB</span>
+          </div>
+        </div>
+        <div class="values-grid">
+          <article class="value-card"><span class="line-icon">✧</span><h4>Mission</h4><p>以創新科技，<br>改善腦部健康照護</p></article>
+          <article class="value-card"><span class="line-icon">◎</span><h4>Vision</h4><p>成為全球領先的<br>智慧醫療平台</p></article>
+          <article class="value-card"><span class="line-icon">▤</span><h4>Milestones</h4><p>持續突破技術<br>創新研發里程碑</p></article>
+          <article class="value-card"><span class="line-icon">♧</span><h4>Team</h4><p>跨領域專業團隊<br>攜手同行</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section technology-section" id="technology">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">OUR TECHNOLOGY</span>
+          <h2>核心技術 <span>Core Technologies</span></h2>
+          <p>以 AI 驅動的創新技術，推動腦部超音波邁向新視界。</p>
+        </div>
+        <div class="tech-grid">
+          <article class="tech-card">
+            <div class="tech-number">01</div><h3>AIAI智慧顱內血管定位</h3><p class="en">AI-Assisted Intracranial Vessel Localization</p>
+            <div class="tech-visual vascular"><span class="vascular-tree">✳</span><span class="visual-tag">MCA / ACA / PCA</span></div>
+            <p>利用 AI 分析經顱超音波影像與 Doppler 訊號，協助辨識顱內血管與 MCA 位置。</p><a class="text-link" href="#portfolio">了解更多 →</a>
+          </article>
+          <article class="tech-card">
+            <div class="tech-number">02</div><h3>經顱彈性超音波</h3><p class="en">Transcranial Brain Elastography</p>
+            <div class="tech-visual ultrasound"><span class="heatmap"></span><span class="visual-tag">ULTRASOUND SCAN</span></div>
+            <p>開發具顱骨穿透能力的低頻超音波探頭，探索腦實質彈性影像與組織力學特性。</p><a class="text-link" href="#portfolio">了解更多 →</a>
+          </article>
+          <article class="tech-card">
+            <div class="tech-number">03</div><h3>智慧經顱超音波平台</h3><p class="en">Intelligent Transcranial Ultrasound Platform</p>
+            <div class="platform-flow"><span>Probe</span><b>→</b><span>AI</span><b>→</b><span>Clinic</span></div>
+            <p>整合探頭、超音波硬體、TCD／彈性影像與 AI 分析，逐步建立臨床應用平台。</p><a class="text-link" href="#portfolio">了解更多 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portfolio-section" id="portfolio">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">RESEARCH & INNOVATION</span>
+          <h2>研發成果 <span>R&amp;D / Portfolio</span></h2>
+          <p>持續的研發創新，推動智慧醫療的未來。</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card"><div class="portfolio-art art-vessel">⌁</div><h3>AI腦內血管自動定位系統</h3><p>AI Intracranial Vessel Localization</p></article>
+          <article class="portfolio-card"><div class="portfolio-art art-network">⌘</div><h3>TCD MCA 智慧辨識</h3><p>Intelligent MCA Recognition</p></article>
+          <article class="portfolio-card"><div class="portfolio-art art-probe">◉</div><h3>經顱超音波探頭</h3><p>Transcranial Ultrasound Probe</p></article>
+          <article class="portfolio-card"><div class="portfolio-art art-heat"><span></span></div><h3>Brain Elastography</h3><p>腦部彈性影像分析</p></article>
+          <article class="portfolio-card compact"><span class="small-icon">♧</span><h3>非侵入式腦內血管定位</h3></article>
+          <article class="portfolio-card compact"><span class="small-icon">⬡</span><h3>精準腦部影像分析</h3></article>
+          <article class="portfolio-card compact"><span class="small-icon">♙</span><h3>臨床醫療數據應用</h3></article>
+          <article class="portfolio-card compact"><span class="small-icon">◎</span><h3>產學／醫療合作</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news-section" id="news">
+      <div class="container">
+        <div class="section-heading heading-row">
+          <div><span class="eyebrow">LATEST UPDATES</span><h2>最新消息 <span>News</span></h2></div>
+          <a class="text-link" href="#contact">查看更多消息 →</a>
+        </div>
+        <div class="news-tabs"><button class="selected">公司動態</button><button>研發新知</button><button>媒體暨活動</button></div>
+        <div class="news-grid">
+          <article class="news-card"><div class="news-image news-one"><span>NEUROTECH<br>CONFERENCE</span></div><time>2025.08.12</time><h3>創智科研參與國際醫療科技研討會</h3></article>
+          <article class="news-card"><div class="news-image news-two"><span>AI RESEARCH<br>INNOVATION</span></div><time>2025.07.28</time><h3>智慧 AI 腦血管定位技術研發新突破</h3></article>
+          <article class="news-card"><div class="news-image news-three"><span>PARTNERSHIP</span></div><time>2025.06.15</time><h3>深化產學合作推動醫療科技創新</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="contact-intro">
+            <span class="eyebrow">LET'S CONNECT</span><h2>聯絡我們</h2><h3>Contact Us</h3>
+            <p>與我們攜手，共同開創智慧醫療的未來。</p>
+            <div class="partnership"><b>技術合作</b><small>Technology Partnership</small><p>合作研發、醫療應用與 AI 技術交流，歡迎與我們聯繫。</p></div>
+          </div>
+          <form class="contact-form">
+            <label>姓名 Name<input type="text" name="name" placeholder="請輸入姓名" required></label>
+            <label>公司／單位 Company<input type="text" name="company" placeholder="請輸入公司或單位"></label>
+            <label>電子郵件 Email<input type="email" name="email" placeholder="name@example.com" required></label>
+            <label>合作需求 Subject<select name="subject"><option value="">請選擇合作需求</option><option>技術合作</option><option>產品諮詢</option><option>學術研究</option><option>其他</option></select></label>
+            <label>訊息 Message<textarea name="message" rows="3" placeholder="請簡述您的需求"></textarea></label>
+            <button class="button button-primary" type="submit">送出訊息 <span>→</span></button>
+            <p class="form-note" aria-live="polite">此為前端展示表單，正式上線請串接後端或表單服務。</p>
+          </form>
+          <aside class="contact-info"><b>聯絡資訊</b><small>Contact Info</small><p>✉　info@neurotech.com</p><p>⌖　台灣・Taiwan</p><p>◷　週一至週五 09:00–18:00</p><div class="socials"><a href="#contact" aria-label="LinkedIn">in</a><a href="#contact" aria-label="YouTube">▶</a></div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark">N</span><span class="brand-name"><strong>創智科研生技</strong><small>Innovative NeuroTech</small></span></a><p>© 2026 Innovative NeuroTech. All Rights Reserved.</p><a href="#home">BACK TO TOP ↑</a></div></footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    toggle.addEventListener('click', () => {
+      const opened = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', opened);
+      toggle.textContent = opened ? '✕' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    }));
+    document.querySelector('.contact-form').addEventListener('submit', event => {
+      event.preventDefault();
+      document.querySelector('.form-note').textContent = '表單欄位已填妥。正式網站請連接寄信或 CRM 系統以完成送出。';
+    });
+  </script>
+</body>
+</html>
